@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="ADSS-Client-API">
-      <HintPath>..\..\..\..\..\..\ADSSClient\API\lib\AnyCPU\ADSS-Client-API.dll</HintPath>
+      <HintPath>StaticFiles\ADSS-Client-API.dll</HintPath>
     </Reference>
   </ItemGroup>
 
