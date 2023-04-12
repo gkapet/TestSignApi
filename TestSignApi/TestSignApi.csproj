@@ -15,7 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="StaticFiles\" />
+    <None Update="StaticFiles\ADSS-Client-API.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticFiles\Doc1.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticFiles\gov_malta_tls.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 
