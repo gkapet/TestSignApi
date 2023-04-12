@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PdfSharp.MigraDoc.Standard" Version="1.51.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ADSS-Client-API">
+      <HintPath>..\..\..\..\..\..\ADSSClient\API\lib\AnyCPU\ADSS-Client-API.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="StaticFiles\" />
+  </ItemGroup>
+
+
+</Project>
