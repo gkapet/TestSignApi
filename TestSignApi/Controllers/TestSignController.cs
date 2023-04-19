@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.FileIO;
 using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Internals;
 using MigraDoc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -35,16 +36,20 @@ namespace TestSignApi.Controllers
             PdfSigningRequest obj_signRequest = new PdfSigningRequest("Government_of_Malta", _inPath);
             obj_signRequest.SetProfileId("adss:signing:profile:001");
             obj_signRequest.SetSslClientCredentials(_cerPath, ";Hg;1l?6w/A0");
-            obj_signRequest.SetCertificateAlias("Testseal");
-            obj_signRequest.SetRequestMode(PdfSigningRequest.HTTP);
+            obj_signRequest.SetSigningField("Signature1");
+            obj_signRequest.SetCertificateAlias("QVSEAL");
+            obj_signRequest.SetSignedBy("QVSEAL");
+            obj_signRequest.SetContactInfo("info@gov.mt");
+            obj_signRequest.SetSigningLocation("Republic of Malta");
+            obj_signRequest.SetSignatureDictionarySize(204800);
             obj_signRequest.SetLocalHash(true);
-            obj_signRequest.SetSigningPage(1);
-            obj_signRequest.SetSignatureDictionarySize(40);
+            obj_signRequest.SetRequestMode(PdfSigningRequest.HTTP);
+            obj_signRequest.SetPdfSignatureMode(PdfSigningRequest.SIGNING_MODE_DETACHED);
             PdfSigningResponse obj_signingResponse = (PdfSigningResponse)obj_signRequest.Send("https://demo-adss1.signingportal.com/adss/signing/hdsi");
             var signedPdf = new MemoryStream();
             obj_signingResponse.PublishDocument(signedPdf);
 
-            return File(signedPdf.ToArray(), "application/pdf", "TestPdf");
+            return File(signedPdf.ToArray(), "application/pdf", "TestPdf.pdf");
         }
 
         [HttpGet]
@@ -75,16 +80,20 @@ namespace TestSignApi.Controllers
             PdfSigningRequest obj_signRequest = new PdfSigningRequest("Government_of_Malta", streamPdf);
             obj_signRequest.SetProfileId("adss:signing:profile:001");
             obj_signRequest.SetSslClientCredentials(_cerPath, ";Hg;1l?6w/A0");
-            obj_signRequest.SetCertificateAlias("Testseal");
-            obj_signRequest.SetRequestMode(PdfSigningRequest.HTTP);
+            obj_signRequest.SetSigningField("Signature1");
+            obj_signRequest.SetCertificateAlias("QVSEAL");
+            obj_signRequest.SetSignedBy("QVSEAL");
+            obj_signRequest.SetContactInfo("info@gov.mt");
+            obj_signRequest.SetSigningLocation("Republic of Malta");
+            obj_signRequest.SetSignatureDictionarySize(204800);
             obj_signRequest.SetLocalHash(true);
-            obj_signRequest.SetSigningPage(1);
-            obj_signRequest.SetSignatureDictionarySize(40);
+            obj_signRequest.SetRequestMode(PdfSigningRequest.HTTP);
+            obj_signRequest.SetPdfSignatureMode(PdfSigningRequest.SIGNING_MODE_DETACHED);
             PdfSigningResponse obj_signingResponse = (PdfSigningResponse)obj_signRequest.Send("https://demo-adss1.signingportal.com/adss/signing/hdsi");
             var signedPdf = new MemoryStream();
             obj_signingResponse.PublishDocument(streamPdf);
 
-            return File(signedPdf.ToArray(), "application/pdf", "TestPdf");
+            return File(signedPdf.ToArray(), "application/pdf", "TestPdf.pdf");
         }
     }
 }

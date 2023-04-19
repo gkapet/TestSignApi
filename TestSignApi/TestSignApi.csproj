@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="itext7" Version="7.2.5" />
     <PackageReference Include="PdfSharp.MigraDoc.Standard" Version="1.51.15" />
   </ItemGroup>
 
